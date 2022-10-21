@@ -1,0 +1,113 @@
+$settings-border-color: $maya-pink;
+$settings-background-color: $white-ter;
+
+.flexible-content {
+  background-color: $white-ter;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .column {
+    height: auto;
+  }
+
+  &__row {
+    border-left: 5px solid darken($white-ter, 3%);
+
+    &--settings {
+      border-left-color: $settings-border-color;
+
+      .flexible-content__fields {
+        background-color: $settings-background-color;
+      }
+
+      .flexible-content__actions {
+        background-color: $settings-border-color;
+      }
+    }
+  }
+
+  &__fields {
+    padding: 20px;
+    margin-bottom: 20px;
+
+    & .flexible-content__fields {
+      padding-right: 20px;
+    }
+  }
+
+  &__actions {
+    background-color: darken($white-ter, 3%);
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+
+    .button {
+      display: block;
+      color: $grey;
+      background: transparent;
+
+      &:hover {
+        background: transparent;
+      }
+
+      &:active,
+      &.is-active {
+        background: transparent;
+        color: $white;
+      }
+    }
+
+    .delete {
+      margin: 8px;
+      background-color: $grey;
+
+      &:hover {
+        background-color: $black;
+      }
+    }
+  }
+
+  &__title-block {
+    align-items: center;
+    flex: 1 1 auto;
+    display: flex;
+    position: relative;
+    width: calc(100% - 20px);
+  }
+
+  &__row-title {
+    font-weight: bold;
+    left: 0;
+    overflow-x: hidden;
+    padding: 6px 20px 6px;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  &__actions-block {
+    flex: 1 1 0%;
+    display: flex;
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+
+  &__action {
+    flex: 0 0 24px;
+  }
+
+  &__drag-handle {
+    cursor: move;
+  }
+
+  /**
+   * @todo remove this. it's only here to space things out nicely until we
+   * can get rid of the extra field-container divs inside the inner fields
+   */
+  &__actions-padder {
+    padding: 0.75rem;
+  }
+}

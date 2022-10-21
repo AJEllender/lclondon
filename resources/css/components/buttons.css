@@ -1,0 +1,21 @@
+.button {
+  @apply bg-gray-600 p-3 my-2 w-full align-middle text-white text-center inline-block;
+}
+
+@screen sm {
+  .button {
+    @apply px-20 w-auto;
+  }
+
+  .button + .button {
+    @apply ml-4;
+  }
+}
+
+.button:hover {
+  @apply bg-gray-700;
+}
+
+.button:active {
+  @apply bg-gray-800;
+}

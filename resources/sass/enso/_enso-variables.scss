@@ -1,0 +1,53 @@
+$family-sans-serif: 'Miriam Libre', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto',
+  'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial',
+  sans-serif !default;
+
+// Maya Primary Colours
+$maya-main-blue: #1a1833 !default;
+$maya-ink-blue: #312b56 !default;
+$maya-off-white: #f4f4ef !default;
+
+// Maya Shades
+$maya-off-black: #0f0f20 !default;
+$maya-light-blue-bg: #22203f !default;
+$maya-dark-off-white: #e5e6de !default;
+$maya-white: #ffffff !default;
+
+// Maya Accents
+$maya-pink: #ff82bb !default;
+$maya-yellow: #ffda93 !default;
+$maya-green: #8fefb6 !default;
+$maya-blue: #7edce0 !default;
+$maya-purple: #a186be !default;
+
+$orange: hsl(32, 85%, 73%) !default;
+$yellow: $maya-yellow !default;
+$green: hsl(130, 64%, 67%) !default;
+$turquise: $maya-green !default;
+$cyan: $maya-blue;
+$blue: hsl(209, 76%, 60%) !default;
+$purple: $maya-purple;
+$red: hsl(354, 78%, 62%) !default;
+$pink: hsl(330, 69%, 78%) !default;
+$dark: hsl(245, 34%, 14%) !default;
+
+$primary: $pink !default;
+
+$info: $blue !default;
+$success: $green !default;
+$warning: $yellow !default;
+$danger: $red !default;
+
+$white-ter: hsl(0, 0%, 96%) !default;
+$white-bis: hsl(0, 0%, 98%) !default;
+$white: hsl(0, 0%, 100%) !default;
+
+$text: $dark;
+
+$button-color: $white !default;
+$button-background-color: $dark !default;
+$button-hover-color: $white !default;
+$button-focus-color: $white !default;
+$button-active-color: $white !default;
+
+$modal-content-width: 75vw;

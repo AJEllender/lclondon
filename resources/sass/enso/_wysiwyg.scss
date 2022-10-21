@@ -1,0 +1,75 @@
+.wysiwyg-content {
+  background-color: $white;
+}
+
+.ql-container {
+  font-size: 1rem;
+}
+
+.ql-snow {
+  .ql-editor {
+    p {
+      margin-bottom: .7em;
+      font-size: 1em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    h2 {
+      font-size: 2.5em;
+    }
+
+    h3 {
+      font-size: 2em;
+    }
+
+    h4 {
+      font-size: 1.5em;
+    }
+
+    h5 {
+      font-size: 1.25em;
+    }
+
+    h6 {
+      font-size: 1em;
+    }
+  }
+
+  .ql-picker.ql-header {
+    .ql-picker-item[data-value="1"]::before {
+      font-size: 3em;
+    }
+
+    .ql-picker-item[data-value="2"]::before {
+      font-size: 2.5em;
+    }
+
+    .ql-picker-item[data-value="3"]::before {
+      font-size: 2em;
+    }
+
+    .ql-picker-item[data-value="4"]::before {
+      font-size: 1.5em;
+    }
+
+    .ql-picker-item[data-value="5"]::before {
+      font-size: 1.25em;
+    }
+
+    .ql-picker-item[data-value="6"]::before {
+      font-size: 1em;
+    }
+  }
+}

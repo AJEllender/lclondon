@@ -1,0 +1,29 @@
+
+.dropzone {
+    .dz-preview {
+        &.dz-error {
+            &.dz-complete {
+                background-color: $danger;
+
+                .dz-error-mark {
+                    top: auto !important;
+                    bottom: 10px;
+                    text-align: right;
+
+                    i {
+                        color: $danger !important;
+                    }
+                }
+            }
+
+            .dz-error-message {
+                top: 207px;
+                left: 31px;
+            }
+
+            .dz-details {
+                background-color: $danger;
+            }
+        }
+    }
+}
