@@ -1,5 +1,5 @@
 .button {
-  @apply bg-gray-600 p-3 my-2 w-full align-middle text-white text-center inline-block;
+  @apply bg-gray-600 p-3 w-full align-middle text-white text-center inline-block;
 }
 
 @screen sm {

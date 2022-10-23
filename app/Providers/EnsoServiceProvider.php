@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Yadda\Enso\Facades\EnsoMenu;
 
 class EnsoServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,15 @@ class EnsoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        EnsoMenu::addItems([
+            array_merge(
+                Config::get('enso.crud.eventtype.menuitem'),
+                [
+                    'items' => [
+                        Config::get('enso.crud.event.menuitem'),
+                    ],
+                ]
+            )
+        ]);
     }
 }

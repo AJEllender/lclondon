@@ -1,19 +1,46 @@
 @php
   /**
    * $row_data consists of:
-   *   ->row_label - string - Not relevant for current use-case
-   *   ->row_id - string - for anchor tags in case they want to link with a # value
+   *   ->row_id - string
+   *   ->row_label - string
+   *   ->row_type - string
    *   ->buttons, Collection - items which consist of:
    *     ->label - string
    *     ->hover - string - if not set, use the label as the hover tooltip
    *     ->link - string
    *     ->target - string
    *     ->rel - string
+   *   ->content - string - HTML
    *   ->title - string
    */
   $row_data = \App\Crud\Rows\TextRow::unpack($row);
 @endphp
 
-<div class="container">
-  <h2>TextRow content goes here</h2>
+<div
+    data-label="{{ $row_data->row_label }}"
+    id="{{  $row_data->row_id }}"
+    class="relative w-full flex items-center justify-center my-12 sm:my-16 md:my-20 lg:my-24 px-6 sm:px-12"
+>
+    <div class="w-full md:max-w-3xl">
+        @if (!empty($row_data->title))
+            @component('enso-crud::flex-partials.components.title', [
+                'class' => 'mb-4 md:mb-6 lg:mb-10'
+            ])
+                {{ $row_data->title }}
+            @endcomponent
+        @endif
+
+        @component('enso-crud::flex-partials.components.content', [
+            'class' => 'prose prose-lg'
+        ])
+            {!! $row_data->content !!}
+        @endcomponent
+
+        @component('enso-crud::flex-partials.components.buttons', [
+            'wrapper_class' => 'mt-4 sm:mt-6 md:mt-8',
+            'buttons' => $row_data->buttons,
+        ])
+        @endcomponent
+    </div>
 </div>
+

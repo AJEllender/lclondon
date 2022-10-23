@@ -2,19 +2,30 @@
 
 namespace App\Crud;
 
+use App\Crud\Fields\HeaderField;
+use App\Crud\Traits\HasDefaultRowSpecs;
+use Yadda\Enso\Crud\Forms\Form;
 use Yadda\Enso\Pages\Crud\Page as BaseCrud;
 
 class Page extends BaseCrud
 {
+    use HasDefaultRowSpecs;
+
     /**
-     * Array of Site-wide default row specs.
+     * Default form configuration.
      *
-     * @return array
+     * @return \Yadda\Enso\Crud\Forms\Form
      */
-    protected function defaultRowSpecs(): array
+    public function create(Form $form)
     {
-        return [
-            \App\Crud\Rows\TextRow::make(),
-        ];
+        $form = parent::create($form);
+
+        $form->getSection('content')
+            ->addFieldAfter(
+                'excerpt',
+                HeaderField::make('header')
+            );
+
+        return $form;
     }
 }

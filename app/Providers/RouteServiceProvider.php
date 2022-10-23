@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Yadda\Enso\Facades\EnsoCrud;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -40,13 +41,23 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
+                ->name('api.')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
+
+            Route::middleware(['web', 'enso'])
+                ->namespace($this->namespace)
+                ->prefix('admin')
+                ->name('admin.')
+                ->group(base_path('routes/admin.php'));
 
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::model('event', EnsoCrud::modelClass('event'));
+        Route::model('event_type', EnsoCrud::modelClass('eventtype'));
     }
 
     /**

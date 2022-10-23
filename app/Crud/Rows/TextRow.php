@@ -3,6 +3,7 @@
 namespace App\Crud\Rows;
 
 use App\Crud\Fields\ButtonsField;
+use Illuminate\Support\Facades\Config;
 use Yadda\Enso\Crud\Forms\Fields\TextField;
 use Yadda\Enso\Crud\Forms\Fields\WysiwygField;
 use Yadda\Enso\Crud\Forms\FlexibleContentSection;
@@ -32,7 +33,10 @@ class TextRow extends FlexibleContentSection
             ->excerptField('title')
             ->addFields([
                 TextField::make('title'),
-                WysiwygField::make('content'),
+                WysiwygField::make('content')
+                    ->setModules(
+                        Config::get('enso.flexible-content.rows.herorow.modules', [])
+                    ),
                 ButtonsField::make('buttons'),
             ]);
     }

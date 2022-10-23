@@ -10,3 +10,5 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('events')->uses([\App\Http\Controllers\Api\EventController::class, 'index'])->name('events.index');

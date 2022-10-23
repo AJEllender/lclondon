@@ -11,18 +11,17 @@
 |
 */
 
-Auth::routes();
-
-Route::group(['middleware' => 'enso'], function () {
-    EnsoCrud::crudRoutes('admin/pages', 'page', 'admin.pages');
-    Route::get('admin')->uses([\App\Http\Controllers\Admin\DashboardController::class, 'index']);
-});
+Auth::routes(['register' => false]);
 
 Route::group(['middleware' => 'holding-page'], function () {
     Route::get('/')->uses([\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::get('events-types')->uses([\App\Http\Controllers\EventTypeController::class, 'index'])->name('event-types.index');
+    Route::get('events/{event_type}/{event}')->uses([\App\Http\Controllers\EventController::class, 'show'])->name('events.show');
+    Route::get('events/{event_type}')->uses([\App\Http\Controllers\EventTypeController::class, 'show'])->name('event-types.show');
+    Route::get('events')->uses([\App\Http\Controllers\EventController::class, 'index'])->name('events.index');
+
     // Duplicate route for post-login/register redirection
     Route::get('home')->uses([\App\Http\Controllers\HomeController::class, 'redirect']);
-
     Route::get('{page}')->uses([\App\Http\Controllers\PageController::class, 'show'])->name('pages.show');
 });

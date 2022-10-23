@@ -23,21 +23,21 @@ mix.webpackConfig({
       },
       test: /\.(jpe?g|png|gif)$/i,
     }),
-    new SVGSpritemapPlugin('./resources/svg/sprite/*.svg', {
-      output: {
-        filename: 'svg/sprite.svg',
-        chunk: { keep: true },
-        svg: { sizes: false },
-        svgo: true,
-      },
-      sprite: {
-        prefix: false,
-        generate: {
-          title: true,
-          symbol: true,
-        },
-      },
-    }),
+    // new SVGSpritemapPlugin('./resources/svg/sprite/*.svg', {
+    //   output: {
+    //     filename: 'svg/sprite.svg',
+    //     chunk: { keep: true },
+    //     svg: { sizes: false },
+    //     svgo: true,
+    //   },
+    //   sprite: {
+    //     prefix: false,
+    //     generate: {
+    //       title: true,
+    //       symbol: true,
+    //     },
+    //   },
+    // }),
   ],
 });
 

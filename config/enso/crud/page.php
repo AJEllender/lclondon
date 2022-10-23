@@ -3,6 +3,14 @@
 return [
 
     /**
+     * Page slugs of Pages that should not show in their normal place, but that
+     * may be deliberately used elsewhere.
+     */
+    'blacklist' => [
+        'events',
+    ],
+
+    /**
      * Class of the Crud Config for Pages.
      */
     'config' => App\Crud\Page::class,
@@ -35,6 +43,10 @@ return [
      * Records where the frontend identifier should not be editable by regular admins
      */
     'protected_records' => [
+        'about',
+        'contact',
+        'events',
+        'gallery',
         'holding-page',
         'home',
     ],

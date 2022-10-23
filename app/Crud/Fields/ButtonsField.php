@@ -2,9 +2,8 @@
 
 namespace App\Crud\Fields;
 
+use App\Crud\Rows\ButtonRow;
 use Yadda\Enso\Crud\Forms\Fields\FlexibleContentField;
-use Yadda\Enso\Crud\Forms\Rows\Button;
-use Yadda\Enso\Crud\Forms\Rows\ContentButton;
 use Yadda\Enso\Crud\Traits\FieldHasRowSpecs;
 
 class ButtonsField extends FlexibleContentField
@@ -42,11 +41,8 @@ class ButtonsField extends FlexibleContentField
     protected function getButtonDefinitions(): array
     {
         return [
-            Button::make('button')
+            ButtonRow::make('buttonrow')
                 ->setLabel('Button')
-                ->withoutCommon(),
-            ContentButton::make('content_button')
-                ->setLabel('Linked Content Button')
                 ->withoutCommon(),
         ];
     }
