@@ -33,6 +33,7 @@ class ButtonRow extends FlexibleContentSection
         parent::__construct($name);
 
         $this->setLabel('Button')
+            ->excerptField('label')
             ->addFields([
                 TextField::make('label')
                     ->setLabel('Text')
