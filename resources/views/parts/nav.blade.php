@@ -4,10 +4,10 @@
 @endphp
 
 <main-menu>
-    <div class="flex-grow-0 flex-shrink-0 bg-gray-400" slot-scope="{menuVisible,toggleMenu}">
-        <div class="max-w-screen-lg px-5 mx-auto flex justify-between items-center">
-            <a href="{{ url('/') }}" class="block w-10 h-10 my-2">
-                <img src="{{ asset('img/enso/enso-square-logo.png') }}" alt="{{ config('app.name') }}">
+    <div class="fixed w-full top-0 h-14 bg-gray-400 flex z-20 drop-shadow-lg" slot-scope="{menuVisible,toggleMenu}">
+        <div class="max-w-screen-lg px-5 xl:px-0 mx-auto flex justify-between items-center grow">
+            <a href="{{ url('/') }}" class="block text-xl font-bold">
+                {{ \Yadda\Enso\Settings\Facades\EnsoSettings::get('site-name', Config::get('app.name')) }}
             </a>
             <div class="flex items-center">
                 @if ($menu)
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div :class="{hidden: !menuVisible}" class="absolute top-0 left-0 w-full h-full bg-gray-400">
+        <div :class="{hidden: !menuVisible}" class="fixed top-0 left-0 w-full h-full bg-gray-400">
         <button type="button" @click="toggleMenu" class="absolute top-0 right-0 p-10 text-lg leading-none">
             ✖ <span class="sr-only">Close Menu</span>
         </button>
