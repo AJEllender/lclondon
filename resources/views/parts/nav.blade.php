@@ -28,11 +28,11 @@
             </div>
         </div>
 
-        <div :class="{hidden: !menuVisible}" class="fixed top-0 left-0 w-full h-full bg-gray-400">
-        <button type="button" @click="toggleMenu" class="absolute top-0 right-0 p-10 text-lg leading-none">
-            ✖ <span class="sr-only">Close Menu</span>
-        </button>
-            <div class="h-full flex flex-col items-center justify-center">
+        <div :class="{hidden: !menuVisible}" class="absolute top-0 left-0 w-screen h-screen bg-gray-400">
+            <button type="button" @click="toggleMenu" class="absolute top-0 right-0 p-10 text-lg leading-none z-20">
+                ✖ <span class="sr-only">Close Menu</span>
+            </button>
+            <div class="relative h-full flex flex-col items-center justify-center z-10">
                 @if ($menu)
                     @foreach ($menu->items as $item)
                         <a href="{{ $item->url }}" target="{{ $item->target_str }}" rel="{{ $item->rel }}" class="block text-lg my-3">
