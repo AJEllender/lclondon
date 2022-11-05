@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Crud\MenuCrud;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Yadda\Enso\Facades\EnsoMenu;
+use Yadda\Enso\SiteMenus\Contracts\MenuCrud as ContractsMenuCrud;
 
 class EnsoServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class EnsoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ContractsMenuCrud::class, MenuCrud::class);
     }
 
     /**

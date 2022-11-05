@@ -5,7 +5,7 @@ return [
     /**
      * Class of the Crud Config for Site Menus.
      */
-    'config' => Yadda\Enso\SiteMenus\Crud\Menu::class,
+    'config' => App\Crud\MenuCrud::class,
 
     /**
      * Class of the Crud Controller for Site Menus.
