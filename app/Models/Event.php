@@ -124,6 +124,20 @@ class Event extends Model implements ContractsIsCrudModel, ModelIsPublishable
     }
 
     /**
+     * Gets the full event name (both the event type and event name, if different)
+     *
+     * @return string
+     */
+    public function getFullEventName(): string
+    {
+        if ($this->eventType && !empty($this->name) && ($this->name !== $this->eventType->name)) {
+            return $this->eventType->name . ': ' . $this->name;
+        } else {
+            return $this->getEventName();
+        }
+    }
+
+    /**
      * Gets the name of the Publish At DateTime column on this publishable
      *
      * @return string|null
@@ -165,18 +179,6 @@ class Event extends Model implements ContractsIsCrudModel, ModelIsPublishable
     public function image(): BelongsTo
     {
         return $this->belongsTo(App::make(ImageFile::class), 'image_id');
-    }
-
-    /**
-     * Filters an Event query to return only those should show to users
-     *
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function scopeFrontend(Builder $query): void
-    {
-        $query->published();
     }
 
     /**

@@ -45,7 +45,6 @@ class EventTypeController extends Controller
         }
 
         $upcoming_events = $event_type->events()
-            ->frontend()
             ->upcoming()
             ->orderBy('start_at', 'asc')
             ->limit(3)

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Yadda\Enso\Crud\Traits\UsesPage;
+use Yadda\Enso\Facades\EnsoCrud;
 
 class EventController extends Controller
 {
@@ -24,7 +25,20 @@ class EventController extends Controller
     {
         $page = $this->usePage('events');
 
-        return View::make('events.index', compact('page'));
+        /**
+         * Load events onto the EventTypes so that ->events->first() is always
+         * the 'next' event.
+         */
+        $event_types = EnsoCrud::query('eventtype')
+            ->withFutureEvents()
+            ->with([
+                'events' => function ($query) {
+                    $query->upcoming()->orderBy('start_at', 'asc');
+                },
+            ])
+            ->get();
+
+        return View::make('events.index', compact('event_types', 'page'));
     }
 
     /**
@@ -41,7 +55,6 @@ class EventController extends Controller
         }
 
         $upcoming_events = $event_type->events()
-            ->frontend()
             ->upcoming()
             ->where($event->getKeyName(), '!=', $event->getKey())
             ->orderBy('start_at', 'asc')

@@ -13,7 +13,7 @@
 
 Auth::routes(['register' => false]);
 
-Route::group(['middleware' => 'holding-page'], function () {
+Route::middleware(['holding-page', 'globalscopes'])->group(function () {
     Route::get('/')->uses([\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('events-types')->uses([\App\Http\Controllers\EventTypeController::class, 'index'])->name('event-types.index');

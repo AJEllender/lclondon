@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Traits\HasFlexibleFields;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -114,5 +116,12 @@ class EventType extends Model implements ContractsIsCrudModel, ModelIsPublishabl
     public function image(): BelongsTo
     {
         return $this->belongsTo(App::make(ImageFile::class), 'image_id');
+    }
+
+    public function scopeWithFutureEvents(Builder $query): void
+    {
+        $query->whereHas('events', function ($query) {
+            $query->upcoming();
+        });
     }
 }

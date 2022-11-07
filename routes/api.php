@@ -11,4 +11,6 @@
 |
 */
 
-Route::get('events')->uses([\App\Http\Controllers\Api\EventController::class, 'index'])->name('events.index');
+Route::middleware(['globalscopes'])->group(function () {
+    Route::get('events')->uses([\App\Http\Controllers\Api\EventController::class, 'index'])->name('events.index');
+});
