@@ -46,7 +46,7 @@
                 @component('enso-crud::flex-partials.components.title', [
                     'class' => 'mb-4 md:mb-6 lg:mb-10 text-center'
                 ])
-                    Upcoming Events
+                    Other Future {{ $event->eventType ? $event->eventType->getName() : '' }} Dates
                 @endcomponent
 
                 @include('events.parts.event-list', [
