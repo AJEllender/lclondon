@@ -8,7 +8,7 @@
 <a href="{{ route('event-types.show', $event_type->slug) }}" class="flex {{ $is_published ? '' : 'unpublished'}}">
     <div class="grow-0 shrink-0 h-24 w-24">
         @if ($event_type->image)
-            <img src="{{ $event_type->image->getResizeUrl('preview_1x') }}" alt="{{ $event_type->name }}">
+            <img src="{{ $event_type->image->getResizeUrl('preview_1x', true) }}" alt="{{ $event_type->name }}">
         @endif
     </div>
     <div class="bg-gray-100 p-4 grow shrink flex flex-col justify-center">
