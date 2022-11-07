@@ -1,11 +1,13 @@
 @php
-    $menu = SiteMenu::get('footer-menu');
+    // $menu = SiteMenu::get('footer-menu');
+
+    $event_types = \Yadda\Enso\Facades\EnsoCrud::query('eventtype')->whereHas('events')->get();
 @endphp
 
 <div class="flex-grow-0 flex-shrink-0 bg-gray-200 py-10">
     <div class="max-w-screen-lg px-5 mx-auto">
         <div class="sm:flex">
-        <div class="sm:w-2/3">
+        {{-- <div class="sm:w-2/3">
             @if ($menu && $menu->items->isNotEmpty())
                 @if (!empty($menu->title))
                     <p class="mb-5">{{ $menu->title }}</p>
@@ -14,6 +16,17 @@
                     <p class="my-2">
                         <a href="{{ $item->url }}" target="{{ $item->target }}" class="text-gray-500 hover:text-gray-800">
                             {{ $item->label }}
+                        </a>
+                    </p>
+                @endforeach
+            @endif
+        </div> --}}
+        <div class="sm:w-2/3">
+            @if ($event_types->count())
+                @foreach ($event_types as $event_type)
+                    <p class="my-2">
+                        <a href="{{ route('event-types.show', $event_type->getKey()) }}" target="_self" class="text-gray-500 hover:text-gray-800">
+                            {{ $event_type->getName() }}
                         </a>
                     </p>
                 @endforeach

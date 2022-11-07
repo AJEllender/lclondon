@@ -26,6 +26,15 @@ class Page extends BaseCrud
                 HeaderField::make('header')
             );
 
+        $this->removeUnusedFields($form);
+
         return $form;
+    }
+
+    protected function removeUnusedFields(Form $form)
+    {
+        $section = $form->getSection('content');
+
+        $section->removeField('thumbnail');
     }
 }
