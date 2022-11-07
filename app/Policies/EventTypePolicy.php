@@ -32,7 +32,8 @@ class EventTypePolicy
      */
     public function view(?User $user, EventType $event_type)
     {
-        return $event_type->accessibleToUser();
+        return $event_type->isPublished()
+            || ($user && $user->hasPermission($event_type->getPublishViewOverridePermission()));
     }
 
     /**

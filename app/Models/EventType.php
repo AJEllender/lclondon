@@ -131,24 +131,6 @@ class EventType extends Model implements ContractsIsCrudModel, ModelIsPublishabl
     }
 
     /**
-     * Whether this Event is accessible to the given/current user.
-     *
-     * @param User|null $user
-     *
-     * @return boolean
-     */
-    public function isAccessibleToUser(User $user = null): bool
-    {
-        $user = $user ?? Auth::user();
-
-        return $this->isPublished()
-            || (
-                $user
-                && $user->hasPermission($this->getPublishViewOverridePermission())
-            );
-    }
-
-    /**
      * Limit an EventType query to only those that have upcoming events.
      *
      * @param Builder $query

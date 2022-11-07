@@ -18,6 +18,9 @@ class FrontendEventScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         $builder
-            ->accessibleToUser();
+            ->accessibleToUser()
+            ->whereHas('eventType', function ($query) {
+                $query;
+            });
     }
 }

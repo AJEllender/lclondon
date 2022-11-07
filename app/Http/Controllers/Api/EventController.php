@@ -34,6 +34,8 @@ class EventController extends Controller
 
         $query->where('end_at', '>', $start_date)->where('start_at', '<', $end_date);
 
+        dd($query->first());
+
         return CalendarEventResource::collection($query->get())->toResponse($request);
     }
 }
