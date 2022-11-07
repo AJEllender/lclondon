@@ -32,7 +32,7 @@ class EventTypePolicy
      */
     public function view(?User $user, EventType $event_type)
     {
-        return $event_type->isPublished();
+        return $event_type->accessibleToUser();
     }
 
     /**

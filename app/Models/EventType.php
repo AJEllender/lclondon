@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use App\Traits\HasFlexibleFields;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Yadda\Enso\Crud\Contracts\IsCrudModel as ContractsIsCrudModel;
 use Yadda\Enso\Crud\Contracts\Model\IsPublishable as ModelIsPublishable;
 use Yadda\Enso\Crud\Traits\IsCrudModel;
@@ -17,6 +17,7 @@ use Yadda\Enso\Crud\Traits\Model\IsPublishable;
 use Yadda\Enso\Facades\EnsoCrud;
 use Yadda\Enso\Media\Contracts\ImageFile;
 use Yadda\Enso\Meta\Traits\HasMeta;
+use Yadda\Enso\Users\Contracts\User;
 
 class EventType extends Model implements ContractsIsCrudModel, ModelIsPublishable
 {
@@ -99,6 +100,17 @@ class EventType extends Model implements ContractsIsCrudModel, ModelIsPublishabl
     }
 
     /**
+     * Name of the permission that allows users to view a page irrespective of
+     * it's publishing state.
+     *
+     * @return string|null
+     */
+    public function getPublishViewOverridePermission()
+    {
+        return 'view-unpublished-event-types';
+    }
+
+    /**
      * Get the route key for the EventType.
      *
      * @return string
@@ -118,6 +130,31 @@ class EventType extends Model implements ContractsIsCrudModel, ModelIsPublishabl
         return $this->belongsTo(App::make(ImageFile::class), 'image_id');
     }
 
+    /**
+     * Whether this Event is accessible to the given/current user.
+     *
+     * @param User|null $user
+     *
+     * @return boolean
+     */
+    public function isAccessibleToUser(User $user = null): bool
+    {
+        $user = $user ?? Auth::user();
+
+        return $this->isPublished()
+            || (
+                $user
+                && $user->hasPermission($this->getPublishViewOverridePermission())
+            );
+    }
+
+    /**
+     * Limit an EventType query to only those that have upcoming events.
+     *
+     * @param Builder $query
+     *
+     * @return void
+     */
     public function scopeWithFutureEvents(Builder $query): void
     {
         $query->whereHas('events', function ($query) {

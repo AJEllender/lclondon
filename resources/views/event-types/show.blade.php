@@ -13,6 +13,10 @@
         @flexibleField($event_type, 'header', 'header')
     @endif
 
+    @if (!($event_type->isPublished()))
+        @include('parts.unpublished-banner')
+    @endif
+
     @if ($event_type->hasFlexibleContent('content'))
         @flexibleField($event_type, 'content', 'content')
     @endif

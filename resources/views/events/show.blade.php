@@ -15,7 +15,11 @@
         @flexibleField($event->eventType, 'header', 'header')
     @endif
 
-    <div class="px-8 py-4 flex items-center justify-center bg-blue-600 ">
+    @if (!($event->isPublished()))
+        @include('parts.unpublished-banner')
+    @endif
+
+    <div class="px-8 py-4 flex items-center justify-center bg-blue-500">
         <div class="w-full md:max-w-3xl flex justify-between items-center text-white flex-col sm:flex-row">
             <div class="font-bold text-2xl sm:text-3xl">{{ $event->getEventName() }}</div>
             <div class="font-bold text-xl sm:text-2xl">

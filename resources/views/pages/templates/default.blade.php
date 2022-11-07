@@ -7,6 +7,10 @@
         @flexibleField($page, 'header', 'header')
     @endif
 
+    @if (!($page->isPublished()))
+        @include('parts.unpublished-banner')
+    @endif
+
     @if ($page->hasFlexibleContent('content'))
         @flexibleField($page, 'content', 'content')
     @endif

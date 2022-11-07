@@ -32,7 +32,7 @@ class EventPolicy
      */
     public function view(?User $user, Event $event)
     {
-        return $event->isPublished();
+        return $event->isAccessibleToUser();
     }
 
     /**

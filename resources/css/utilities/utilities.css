@@ -1,0 +1,10 @@
+.unpublished {
+  @apply relative border-red-500 border-2;
+}
+
+.unpublished::before {
+  content: "Unpublished";
+  @apply absolute -top-1 -left-2 px-4 py-2;
+  @apply bg-red-500 text-white font-bold text-xs;
+  @apply border-red-500 border-2 rounded-md;
+}
