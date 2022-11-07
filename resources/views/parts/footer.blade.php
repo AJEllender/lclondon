@@ -25,7 +25,7 @@
             @if ($event_types->count())
                 @foreach ($event_types as $event_type)
                     <p class="my-2">
-                        <a href="{{ route('event-types.show', $event_type->getKey()) }}" target="_self" class="text-gray-500 hover:text-gray-800">
+                        <a href="{{ route('event-types.show', $event_type->slug) }}" target="_self" class="text-gray-500 hover:text-gray-800">
                             {{ $event_type->getName() }}
                         </a>
                     </p>
