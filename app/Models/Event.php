@@ -96,6 +96,35 @@ class Event extends Model implements ContractsIsCrudModel, ModelIsPublishable
     }
 
     /**
+     * The value to use at this Model's CRUD label. Name and title are most
+     * frequently used, falling back to ID as it's always going to be available.
+     *
+     * @return string
+     */
+    public function getCrudLabel(): string
+    {
+        return implode(' - ', array_filter([
+            $this->getEventName(),
+            $this->start_at ? $this->start_at->format('jS M') : null,
+        ]));
+    }
+
+    /**
+     * Gets the excerpt of this Event, either from the override or from the
+     * Event Type.
+     *
+     * @return string
+     */
+    public function getEventExcerpt(): string
+    {
+        return $this->excerpt
+            ? $this->excerpt
+            : ($this->eventType
+                ? $this->eventType->excerpt
+                : '');
+    }
+
+    /**
      * Gets the image of this Event, either from the override or from the
      * Event Type.
      *
