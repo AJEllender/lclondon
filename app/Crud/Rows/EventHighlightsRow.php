@@ -47,7 +47,9 @@ class EventHighlightsRow extends FlexibleContentSection
 
         return [
             'title' => $row->blockContent('title'),
-            'eventhighlights' => $instance->getFlexibleContentFieldContent('eventhighlights', $row),
+            'eventhighlights' => $instance->getFlexibleContentFieldContent('eventhighlights', $row)->filter(function ($row_data) {
+                return !empty($row_data->event);
+            }),
         ];
     }
 }
