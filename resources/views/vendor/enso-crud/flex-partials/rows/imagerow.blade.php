@@ -8,7 +8,7 @@
      *   ->style - string (narrow, wide, full-width)
      *   ->title - string
      */
-    $row_data = \App\Crud\Rows\ImageRow::unpack($row);
+    $row_data = $row->unpack();
 
     switch ($row_data->style) {
         case 'narrow':

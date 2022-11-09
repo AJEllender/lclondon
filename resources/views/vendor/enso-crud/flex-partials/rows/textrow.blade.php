@@ -13,7 +13,7 @@
    *   ->content - string - HTML
    *   ->title - string
    */
-  $row_data = \App\Crud\Rows\TextRow::unpack($row);
+  $row_data = $row->unpack();
 @endphp
 
 <div

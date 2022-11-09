@@ -6,7 +6,7 @@
    *   ->images - Collection of ImageFile
    *   ->title - string
    */
-  $row_data = \App\Crud\Rows\GalleryRow::unpack($row);
+  $row_data = $row->unpack();
 @endphp
 
 <div

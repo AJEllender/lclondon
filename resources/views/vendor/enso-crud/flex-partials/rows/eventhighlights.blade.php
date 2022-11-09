@@ -9,7 +9,7 @@
    *     ->alignment - string (left|right)
    *   ->title - string
    */
-  $row_data = \App\Crud\Rows\EventHighlightsRow::unpack($row);
+  $row_data = $row->unpack();
 @endphp
 
 @if($row_data->eventhighlights->count())

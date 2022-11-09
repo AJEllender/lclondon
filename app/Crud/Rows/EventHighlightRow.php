@@ -43,7 +43,7 @@ class EventHighlightRow extends FlexibleContentSection
                         'orderby' => 'start_at',
                     ])
                     ->addFieldsetClass('is-three-quarters'),
-                static::alignmentField()
+                $this->hasAlignmentGetField()
                     ->setLabel('Image alignment')
                     ->addFieldsetClass('is-3')
             ]);
@@ -59,7 +59,7 @@ class EventHighlightRow extends FlexibleContentSection
         $event_id = Arr::get($row->blockContent('event'), 'id');
 
         return [
-            'alignment' => static::calculateAlignment($row),
+            'alignment' => static::hasAlignmentCalculate($row),
             'event' => $event_id ? EnsoCrud::query('event')
                 ->with('eventType')
                 ->find($event_id) : null,

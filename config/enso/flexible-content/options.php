@@ -26,4 +26,14 @@ return [
         'dark' => 'Dark',
     ],
 
+    'rows' => [
+        'buttonrow' => \App\Crud\Rows\ButtonRow::class,
+        'eventhighlight' => \App\Crud\Rows\EventHighlightRow::class,
+        'eventhighlights' => \App\Crud\Rows\EventHighlightsRow::class,
+        'galleryrow' => \App\Crud\Rows\GalleryRow::class,
+        'herorow' => \App\Crud\Rows\HeroRow::class,
+        'imagerow' => \App\Crud\Rows\ImageRow::class,
+        'textrow' => \App\Crud\Rows\TextRow::class,
+    ],
+
 ];

@@ -1,5 +1,5 @@
 @php
-    $row_data = \App\Crud\Rows\HeroRow::unpack($row);
+    $row_data = $row->unpack();
 
     $bg_color_class = \App\Utilities\BackgroundColor::from($row_data->background_color);
 
