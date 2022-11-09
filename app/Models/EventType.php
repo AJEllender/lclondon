@@ -131,6 +131,30 @@ class EventType extends Model implements ContractsIsCrudModel, ModelIsPublishabl
     }
 
     /**
+     * Orders an Adventure Query by the date of it's next available departure
+     *
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function scopeOrderByEventDates(Builder $query, string $order = 'ASC'): void
+    {
+        $event_type_class = EnsoCrud::modelClass('eventtype');
+        $event_type_key_name = (new $event_type_class)->getQualifiedKeyName();
+
+        $select_query = EnsoCrud::query('event')
+                ->accessibleToUser()
+                ->upcoming()
+                ->selectRaw('MIN(start_at)')
+                ->whereColumn('event_type_id', $event_type_key_name)
+                ->take(1);
+
+        $query->addSelect([
+            'next_start_date' => $select_query
+        ])->orderBy('next_start_date', $order);
+    }
+
+    /**
      * Limit an EventType query to only those that have upcoming events.
      *
      * @param Builder $query

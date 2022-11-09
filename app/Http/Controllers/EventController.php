@@ -31,6 +31,7 @@ class EventController extends Controller
          */
         $event_types = EnsoCrud::query('eventtype')
             ->withFutureEvents()
+            ->orderByEventDates()
             ->with([
                 'events' => function ($query) {
                     $query->upcoming()->orderBy('start_at', 'asc');

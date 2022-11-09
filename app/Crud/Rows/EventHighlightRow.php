@@ -37,12 +37,12 @@ class EventHighlightRow extends FlexibleContentSection
                     ->useAjax(
                         route('admin.events.index'),
                         EnsoCrud::modelClass('event')
-                    )
-                    ->setSettings([
+                    )->setSettings([
                         'order' => 'desc',
                         'orderby' => 'start_at',
                     ])
-                    ->addFieldsetClass('is-three-quarters'),
+                    ->addFieldsetClass('is-three-quarters')
+,
                 $this->hasAlignmentGetField()
                     ->setLabel('Image alignment')
                     ->addFieldsetClass('is-3')
