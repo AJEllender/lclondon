@@ -4,7 +4,7 @@
 @endphp
 
 <main-menu>
-    <div class="fixed w-full top-0 h-14 bg-gray-400 flex z-20 drop-shadow-lg" slot-scope="{menuVisible,toggleMenu}">
+    <div class="fixed w-full top-0 h-14 bg-gray-400 flex z-30 drop-shadow-lg" slot-scope="{menuVisible,toggleMenu}">
         <div class="max-w-screen-lg px-5 xl:px-0 mx-auto flex justify-between items-center grow">
             <a href="{{ url('/') }}" class="block text-xl font-bold">
                 {{ \Yadda\Enso\Settings\Facades\EnsoSettings::get('site-name', Config::get('app.name')) }}

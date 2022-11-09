@@ -1,0 +1,78 @@
+.vue-calendar .vuecal__title-bar {
+  @apply bg-blue-300;
+}
+
+.vue-calendar .vuecal__weekdays-headings {
+  @apply bg-blue-200;
+}
+
+.vue-calendar .vuecal__cell {
+  @apply relative min-h-[50px] sm:min-h-[80px];
+}
+
+.vue-calendar .vuecal__cell:hover {
+  @apply bg-blue-100;
+}
+
+.vue-calendar .vuecal__cell--selected {
+  @apply bg-orange-100;
+}
+
+.vue-calendar .vuecal__cell--selected:hover {
+  @apply bg-orange-200;
+}
+
+.vue-calendar .vuecal__cell-content[column] {
+  @apply flex-col;
+}
+
+.vue-calendar .vuecal__cell .vuecal__cell-date {
+  @apply absolute top-1 right-1 w-6 h-6 rounded-full bg-blue-200 z-20 flex items-center justify-center text-black text-xs;
+}
+
+.vue-calendar .vuecal__cell:hover .vuecal__cell-date {
+  @apply bg-blue-300;
+}
+
+.vue-calendar .vuecal__cell--has-events .vuecal__cell-date {
+  @apply bg-orange-200;
+}
+
+.vue-calendar .vuecal__cell--has-events:hover .vuecal__cell-date {
+  @apply bg-orange-200;
+}
+
+.vue-calendar .vuecal__cell--selected .vuecal__cell-date {
+  @apply bg-orange-300;
+}
+
+.vue-calendar .vuecal__cell--selected:hover .vuecal__cell-date {
+  @apply bg-orange-400;
+}
+
+.vue-calendar .vuecal__cell-events {
+  @apply flex flex-col grow z-10;
+}
+
+.vue-calendar .vuecal__event {
+  @apply grow flex bg-gradient-to-t from-blue-200 to-blue-100;
+}
+
+.vue-calendar .vuecal__event a {
+  @apply grow flex flex-col justify-center;
+}
+
+.vue-calendar .vuecal__event + .vuecal__event {
+  @apply border-blue-300 border-t-2;
+}
+
+.vue-calendar .vuecal--month-view .vuecal__event-title {
+  @apply text-xs;
+  @apply sm:text-sm;
+}
+
+.vue-calendar .vuecal__event-time {
+  @apply hidden sm:block;
+  @apply text-xs;
+}
+

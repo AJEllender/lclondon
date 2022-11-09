@@ -4,7 +4,7 @@
 
 @endphp
 
-<div class="flex-grow-0 flex-shrink-0 bg-gray-200 py-10">
+<div class="flex-grow-0 flex-shrink-0 bg-gray-200 py-10 z-20">
     <div class="max-w-screen-lg px-5 mx-auto">
         <div class="sm:flex">
         <div class="sm:w-2/3">

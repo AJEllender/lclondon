@@ -4,4 +4,5 @@
 @import 'components/carousel.css';
 @import 'utilities/media.css';
 @import 'utilities/utilities.css';
+@import 'utilities/vuecal.css';
 @tailwind utilities;

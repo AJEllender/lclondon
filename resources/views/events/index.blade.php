@@ -20,7 +20,7 @@
     </div>
 
     <event-calendar
-        class="h-1/2 max-w-5xl mx-auto my-8 sm:my-12 lg:my-20 bg-white"
+        class="max-w-5xl mx-auto my-8 sm:my-12 lg:my-20 bg-blue-50 vue-calendar"
         base-url="{{ route('api.events.index') }}"
     ></event-calendar>
 
