@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-      <img
-        class="w-full h-auto rounded-lg shadow-lg"
+    <div class="flex flex-wrap -m-4 justify-center">
+      <div
         v-for="(image, index) in images"
-        :src="image.preview"
         :key="image.id"
-        @click.prevent="showMultiple(index)"
+        class="grow-0 shrink-0 basis-full sm:basis-1/2 lg:basis-1/3 p-4"
       >
+        <img
+          class="w-full h-auto rounded-lg shadow-lg"
+          :src="image.preview"
+          @click.prevent="showMultiple(index)"
+        >
+      </div>
     </div>
 
     <vue-easy-lightbox escDisabled moveDisabled :visible="visible" :imgs="imgs" :index="index" @hide="handleHide">
