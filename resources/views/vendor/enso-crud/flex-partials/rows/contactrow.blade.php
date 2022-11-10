@@ -84,10 +84,6 @@
 
 @once
     @push('pre-scripts')
-        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initMap" async defer></script>
-    @endpush
-
-    @push('post-scripts')
         <script>
             var map;
             var marker;
@@ -114,6 +110,10 @@
                 });
             }
         </script>
+    @endpush
+
+    @push('pre-scripts')
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initMap" async defer></script>
     @endpush
 @endonce
 
