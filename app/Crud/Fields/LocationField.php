@@ -25,6 +25,12 @@ class LocationField extends BaseField
             return Arr::only($data, 'location', []);
         }
 
+        if (is_null($data)) {
+            return [
+                'location' => null,
+            ];
+        }
+
         return [
             'location' => [
                 'lng' => $data->getLng(),
