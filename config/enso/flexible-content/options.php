@@ -28,6 +28,7 @@ return [
 
     'rows' => [
         'buttonrow' => \App\Crud\Rows\ButtonRow::class,
+        'calendarrow' => \App\Crud\Rows\CalendarRow::class,
         'eventhighlight' => \App\Crud\Rows\EventHighlightRow::class,
         'eventhighlights' => \App\Crud\Rows\EventHighlightsRow::class,
         'galleryrow' => \App\Crud\Rows\GalleryRow::class,

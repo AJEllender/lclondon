@@ -7,7 +7,6 @@ use App\Http\Resources\CalendarEventResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Response;
 use Yadda\Enso\Facades\EnsoCrud;
 
 class EventController extends Controller
@@ -33,6 +32,13 @@ class EventController extends Controller
         $end_date = \Carbon\Carbon::parse(Arr::first(explode('(', $request->get('end'), 2)))->addMonth();
 
         $query->where('end_at', '>', $start_date)->where('start_at', '<', $end_date);
+
+        $event_type = $request->get('event_type');
+        $query->when($event_type, function ($query) use ($event_type) {
+            $query->whereHas('eventType', function ($query) use ($event_type) {
+                $query->where('slug', $event_type);
+            });
+        });
 
         return CalendarEventResource::collection($query->get())->toResponse($request);
     }

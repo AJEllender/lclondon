@@ -19,12 +19,6 @@
         </div>
     </div>
 
-    <event-calendar
-        class="max-w-5xl mx-auto my-8 sm:my-12 lg:my-20 bg-white vue-calendar"
-        base-url="{{ route('api.events.index') }}"
-    ></event-calendar>
+    @flexibleField($page, 'content', 'content')
 
-    {{-- Events listing --}}
-
-    {{-- @flexibleField($page, 'content', 'content') --}}
 @endsection
