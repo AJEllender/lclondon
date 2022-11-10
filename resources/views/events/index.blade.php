@@ -13,14 +13,14 @@
         <div class="w-full md:max-w-3xl">
             @foreach($event_types as $event_type)
                 @include('event-types.parts.list-preview', [
-                    'class' => $loop->index ? 'border-gray-300 border-t-2' : '',
+                    'class' => $loop->index ? 'mt-4' : '',
                 ])
             @endforeach
         </div>
     </div>
 
     <event-calendar
-        class="max-w-5xl mx-auto my-8 sm:my-12 lg:my-20 bg-blue-50 vue-calendar"
+        class="max-w-5xl mx-auto my-8 sm:my-12 lg:my-20 bg-white vue-calendar"
         base-url="{{ route('api.events.index') }}"
     ></event-calendar>
 

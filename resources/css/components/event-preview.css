@@ -1,0 +1,11 @@
+.event-preview:hover .event-preview__date-tab  {
+  @apply from-orange-500 to-orange-700;
+}
+
+.event-preview:hover .event-preview__title {
+  @apply bg-orange-100;
+}
+
+.event-preview:hover .event-preview__date {
+  @apply bg-orange-200;
+}

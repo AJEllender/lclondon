@@ -28,7 +28,7 @@
             @endif
 
             @foreach ($row_data->eventhighlights as $event_highlight)
-                @include('events.parts.event-highlight', [
+                @include('events.parts.highlight', [
                     'event' => $event_highlight->event,
                     'alignment' => $event_highlight->alignment,
                     'class' => 'mb-4 md:mb-6'

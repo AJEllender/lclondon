@@ -30,7 +30,7 @@
                     Future {{ $event_type->getName() }} Dates
                 @endcomponent
 
-                @include('events.parts.event-list', [
+                @include('events.parts.list', [
                     'events' => $upcoming_events,
                 ])
             </div>

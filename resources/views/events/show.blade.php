@@ -53,7 +53,7 @@
                     Other Future {{ $event->eventType ? $event->eventType->getName() : '' }} Dates
                 @endcomponent
 
-                @include('events.parts.event-list', [
+                @include('events.parts.list', [
                     'events' => $upcoming_events,
                 ])
             </div>
