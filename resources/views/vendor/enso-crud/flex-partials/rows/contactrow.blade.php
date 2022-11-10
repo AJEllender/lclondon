@@ -85,30 +85,34 @@
 @once
     @push('pre-scripts')
         <script>
-            var map;
-            var marker;
+            var maps = [];
+            var markers = [];
             var latLng = {
                 lat: {{ $row_data->location->getLatitude() }},
                 lng: {{ $row_data->location->getLongitude() }},
             };
 
             function initMap() {
+                var mapElements = document.getElementsByClassName('contact-map');
+
                 if (!google || !google.maps) {
                     return;
                 }
 
-                var maps = document.getElementsByClassName('contact-map');
-
-                Array.prototype.forEach.call(maps, (function (element) {
-                    map = new google.maps.Map(element, {
+                for (var i = 0; i < mapElements.length; i++) {
+                    maps[i] = new google.maps.Map(mapElements[i], {
                         center: latLng,
                         zoom: 15,
                     });
 
-                    marker = new google.maps.Marker({
+                    markers[i] = new google.maps.Marker({
                         position: latLng,
-                        map: map,
+                        map: maps[i],
                     });
+                }
+
+                Array.prototype.forEach.call(maps, (function (element) {
+
                 }));
             }
         </script>
