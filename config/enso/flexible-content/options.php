@@ -36,6 +36,7 @@ return [
         'galleryrow' => \App\Crud\Rows\GalleryRow::class,
         'herorow' => \App\Crud\Rows\HeroRow::class,
         'imagerow' => \App\Crud\Rows\ImageRow::class,
+        'textimagerow' => \App\Crud\Rows\TextImageRow::class,
         'textrow' => \App\Crud\Rows\TextRow::class,
         'upcomingeventtypesrow' => \App\Crud\Rows\UpcomingEventTypesRow::class,
     ],

@@ -41,8 +41,7 @@ class EventHighlightRow extends FlexibleContentSection
                         'order' => 'desc',
                         'orderby' => 'start_at',
                     ])
-                    ->addFieldsetClass('is-three-quarters')
-,
+                    ->addFieldsetClass('is-three-quarters'),
                 $this->hasAlignmentGetField()
                     ->setLabel('Image alignment')
                     ->addFieldsetClass('is-3')

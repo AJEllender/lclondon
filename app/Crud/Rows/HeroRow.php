@@ -52,7 +52,7 @@ class HeroRow extends FlexibleContentSection
                 WysiwygField::make('content')
                     ->setLabel('Subtitle')
                     ->setModules(
-                        Config::get('enso.flexible-content.rows.herorow.modules', [])
+                        Config::get('enso.flexible-content.rows.' . $name . '.modules', [])
                     ),
                 ButtonsField::make('buttons')
                     ->setMaxRows(2),
