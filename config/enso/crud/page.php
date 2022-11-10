@@ -6,9 +6,7 @@ return [
      * Page slugs of Pages that should not show in their normal place, but that
      * may be deliberately used elsewhere.
      */
-    'blacklist' => [
-        'events',
-    ],
+    'blacklist' => [],
 
     /**
      * Class of the Crud Config for Pages.

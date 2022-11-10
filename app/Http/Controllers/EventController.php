@@ -15,20 +15,6 @@ class EventController extends Controller
     use UsesPage;
 
     /**
-     * Show the Event list
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index(Request $request): \Illuminate\View\View
-    {
-        $page = $this->usePage('events');
-
-        return View::make('events.index', compact('page'));
-    }
-
-    /**
      * Show an Event
      *
      * @param Event $event

@@ -14,24 +14,6 @@ class EventTypeController extends Controller
     use UsesPage;
 
     /**
-     * Show all the EventTypes
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index(Request $request): \Illuminate\View\View
-    {
-        if (Gate::denies('viewAny', EnsoCrud::modelClass('eventtype'))) {
-            abort(404);
-        }
-
-        $page = $this->usePage('events-types');
-
-        return View::make('event-types.index', compact('page'));
-    }
-
-    /**
      * Show an EventType
      *
      * @param EventType $event_type
