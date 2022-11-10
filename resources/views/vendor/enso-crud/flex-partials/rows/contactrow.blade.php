@@ -97,7 +97,9 @@
                     return;
                 }
 
-                document.getElementsByClassName('contact-map').forEach(function (element) {
+                var maps = document.getElementsByClassName('contact-map');
+
+                Array.prototype.forEach.call(maps, (function (element) {
                     map = new google.maps.Map(element, {
                         center: latLng,
                         zoom: 15,
@@ -107,7 +109,7 @@
                         position: latLng,
                         map: map,
                     });
-                });
+                }));
             }
         </script>
     @endpush
