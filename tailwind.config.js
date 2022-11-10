@@ -1,9 +1,12 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   theme: {
-    fontFamily: {
-      sans: ['Miriam Libre', 'sans-serif'],
-    },
     extend: {
+      fontFamily: {
+        sans: ['Rubik', ...defaultTheme.fontFamily.sans],
+        title: ['Orbitron', ...defaultTheme.fontFamily.sans],
+      },
       flex: {
         half: '0 0 50%',
         third: '0 0 33.333333%',

@@ -16,7 +16,7 @@
         @endif
     </div>
     <div class="group-hover:bg-orange-100 bg-white px-4 sm:px-8 py-4 sm:py-8 grow shrink flex flex-col justify-center">
-        <div class="text-xl sm:text-3xl">
+        <div class="font-title text-xl sm:text-3xl">
             {{ $event->getFullEventName() }}
         </div>
         @if ($event->getEventExcerpt())

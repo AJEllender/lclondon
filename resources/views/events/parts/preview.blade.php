@@ -8,7 +8,7 @@
             <div class="w-full h-64">
         @endif
 
-        <div class="group-hover:bg-orange-100 p-2 font-bold text-xl bg-blue-100 grow">{{ $event->getEventName() }}</div>
+        <div class="font-title group-hover:bg-orange-100 p-2 font-bold text-xl bg-blue-100 grow">{{ $event->getEventName() }}</div>
 
         @if ($event->start_at)
             @include('parts.date-tab', [

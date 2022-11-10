@@ -60,7 +60,7 @@
     <div class="relative w-full flex items-center justify-center px-6 sm:px-12">
         <div class="text-center md:max-w-3xl">
             @if ($row_data->title)
-                <h2 class="text-4xl font-bold mb-3">
+                <h2 class="font-title text-2xl md:text-4xl lg:text-5xl font-bold mb-3">
                     {{ $row_data->title }}
                 </h2>
             @endif

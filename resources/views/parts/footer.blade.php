@@ -14,7 +14,7 @@
                 @endif
                 @foreach ($menu->items as $item)
                     <p class="my-2">
-                        <a href="{{ $item->url }}" target="{{ $item->target }}" class="text-gray-500 hover:text-gray-800">
+                        <a href="{{ $item->url }}" target="{{ $item->target }}" class="font-title text-gray-500 hover:text-gray-800">
                             {{ $item->label }}
                         </a>
                     </p>

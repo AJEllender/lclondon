@@ -20,7 +20,7 @@
         rel="{{ $rel }}"
     @endif
     target="{{ $target ?? '_self' }}"
-    class="font-bold {{ $class ?? '' }} {{ $derived_classes }}"
+    class="font-title font-bold {{ $class ?? '' }} {{ $derived_classes }}"
     title="{{ $hover ?? '' }}"
 >
     {{ $slot }}

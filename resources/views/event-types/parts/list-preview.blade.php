@@ -12,7 +12,7 @@
         @endif
     </div>
     <div class="group-hover:bg-orange-100 bg-blue-100 p-4 grow shrink flex flex-col justify-center">
-        <div class="text-lg sm:text-xl md:text-2xl">
+        <div class="font-title text-lg sm:text-xl md:text-2xl">
             @if ($next_event)
                 {{ $next_event->getFullEventName() }}
             @else

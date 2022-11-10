@@ -6,14 +6,14 @@
 <main-menu>
     <div class="fixed w-full top-0 h-14 bg-blue-400 flex z-30 drop-shadow-lg" slot-scope="{menuVisible,toggleMenu}">
         <div class="max-w-screen-lg px-5 xl:px-0 mx-auto flex justify-between items-center grow">
-            <a href="{{ url('/') }}" class="block text-xl font-bold">
+            <a href="{{ url('/') }}" class="block text-xl font-title font-bold">
                 {{ \Yadda\Enso\Settings\Facades\EnsoSettings::get('site-name', Config::get('app.name')) }}
             </a>
             <div class="flex items-center">
                 @if ($menu)
                     @if(!$is_burger)
                         @foreach ($menu->items as $item)
-                            <a href="{{ $item->url }}" target="{{ $item->target_str }}" rel="{{ $item->rel }}" class="block p-2 hidden md:block ml-10">
+                            <a href="{{ $item->url }}" target="{{ $item->target_str }}" rel="{{ $item->rel }}" class="font-title block p-2 hidden md:block ml-10">
                             {{ $item->label }}
                             </a>
                         @endforeach

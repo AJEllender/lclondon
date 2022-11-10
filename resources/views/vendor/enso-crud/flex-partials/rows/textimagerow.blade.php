@@ -29,7 +29,7 @@
                 @component('enso-crud::flex-partials.components.title', [
                     'class' => 'mb-4 md:mb-6 lg:mb-10'
                 ])
-                    {{ $row_data->title }} {{ $row_data->alignment }}
+                    {{ $row_data->title }}
                 @endcomponent
             @endif
 

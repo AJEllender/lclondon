@@ -5,7 +5,7 @@
 @endphp
 
 @if ($slot)
-  <div class="text-base md:text-lg lg:text-xl {{ $class }}">
+  <div class="font-sans text-base md:text-lg lg:text-xl {{ $class }}">
     {!! $slot !!}
   </div>
 @endif
