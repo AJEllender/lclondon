@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.2",
         "portal-vue": "^2.1.7",
         "vue-cal": "^3.11.0",
         "vue-easy-lightbox": "^0.20.0"

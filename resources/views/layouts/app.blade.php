@@ -19,6 +19,8 @@
       <portal-target name="lightbox"></portal-target>
     </div>
     @includeWhen(config('enso.dev.show_responsive_helper'), 'enso-dev::responsive-helper')
+    @stack('pre-scripts')
     <script src="{{ mix('js/app.js') }}"></script>
+    @stack('post-scripts')
   </body>
 </html>

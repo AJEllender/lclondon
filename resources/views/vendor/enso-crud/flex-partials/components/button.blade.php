@@ -11,7 +11,7 @@
             break;
     }
 
-    $class = implode(' ', $classes);
+    $derived_classes = implode(' ', $classes);
 @endphp
 
 <a
@@ -20,8 +20,8 @@
         rel="{{ $rel }}"
     @endif
     target="{{ $target ?? '_self' }}"
-    class="font-bold {{ $class }}"
+    class="font-bold {{ $class ?? '' }} {{ $derived_classes }}"
     title="{{ $hover ?? '' }}"
-    >
-        {{ $label ?? 'Click me' }}
+>
+    {{ $slot }}
 </a>

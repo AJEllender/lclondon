@@ -13,6 +13,7 @@ trait HasDefaultRowSpecs
     {
         return [
             \App\Crud\Rows\CalendarRow::make(),
+            \App\Crud\Rows\ContactRow::make(),
             \App\Crud\Rows\EventHighlightsRow::make(),
             \App\Crud\Rows\GalleryRow::make(),
             \App\Crud\Rows\ImageRow::make(),

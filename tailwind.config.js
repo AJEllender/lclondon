@@ -16,7 +16,12 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
   purge: {
     content: ['./resources/**/*.blade.php', './resources/**/*.js', './resources/**/*.vue'],
     safelist: [
