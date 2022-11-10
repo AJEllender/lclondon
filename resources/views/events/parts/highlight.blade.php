@@ -2,7 +2,7 @@
     href="{{ route('events.show', [$event->eventType->slug, $event->uuid]) }}"
     class="group md:hover:shadow-lg flex flex-col {{ (($alignment ?? 'left') === 'right') ? 'md:flex-row-reverse' : 'md:flex-row' }} {{ $event->isPublished() ? '' : 'unpublished'}} {{ !empty($class) ? $class : ''}}"
 >
-    <div class="relative grow-0 shrink-0 h-48 w-48 sm:h-72 sm:w-72 self-center md:self-start">
+    <div class="relative grow-0 shrink-0 h-72 w-72 self-center md:self-start">
         @if ($event->getEventImage())
             <img src="{{ $event->getEventImage()->getResizeUrl('preview_4x', true) }}" alt="{{ $event->getEventName() }}">
         @endif
