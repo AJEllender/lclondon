@@ -110,10 +110,6 @@
                         map: maps[i],
                     });
                 }
-
-                Array.prototype.forEach.call(maps, (function (element) {
-
-                }));
             }
         </script>
     @endpush
