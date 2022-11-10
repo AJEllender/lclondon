@@ -10,15 +10,18 @@ class BackgroundColor
             case 'black':
                 return 'bg-black';
                 break;
-            case 'dark':
-                return 'bg-gray-900';
-                break;
             case 'white':
                 return 'bg-white';
                 break;
+            case 'dark':
+                return 'bg-gray-900';
+                break;
             case 'light':
-            default:
                 return 'bg-gray-100';
+                break;
+            default:
+                return 'bg-' . $background_color . '-500';
+                break;
         }
     }
 }

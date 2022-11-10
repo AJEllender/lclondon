@@ -17,6 +17,7 @@ trait HasDefaultRowSpecs
             \App\Crud\Rows\GalleryRow::make(),
             \App\Crud\Rows\ImageRow::make(),
             \App\Crud\Rows\TextRow::make(),
+            \App\Crud\Rows\UpcomingEventTypesRow::make(),
         ];
     }
 }

@@ -11,6 +11,7 @@ return [
     'background-colors' => [
         'white' => 'White',
         'light' => 'Light',
+        'blue' => 'Blue',
         'dark' => 'Dark',
         'black' => 'Black',
     ],
@@ -35,6 +36,7 @@ return [
         'herorow' => \App\Crud\Rows\HeroRow::class,
         'imagerow' => \App\Crud\Rows\ImageRow::class,
         'textrow' => \App\Crud\Rows\TextRow::class,
+        'upcomingeventtypesrow' => \App\Crud\Rows\UpcomingEventTypesRow::class,
     ],
 
 ];

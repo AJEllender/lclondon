@@ -4,6 +4,7 @@
    *   ->row_id - string
    *   ->row_label - string
    *   ->row_type - string
+   *   ->event_type - EventType|null
    *   ->title - string
    */
   $row_data = $row->unpack();

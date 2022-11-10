@@ -25,21 +25,7 @@ class EventController extends Controller
     {
         $page = $this->usePage('events');
 
-        /**
-         * Load events onto the EventTypes so that ->events->first() is always
-         * the 'next' event.
-         */
-        $event_types = EnsoCrud::query('eventtype')
-            ->withFutureEvents()
-            ->orderByEventDates()
-            ->with([
-                'events' => function ($query) {
-                    $query->upcoming()->orderBy('start_at', 'asc');
-                },
-            ])
-            ->get();
-
-        return View::make('events.index', compact('event_types', 'page'));
+        return View::make('events.index', compact('page'));
     }
 
     /**
