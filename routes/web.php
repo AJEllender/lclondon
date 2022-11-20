@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Yadda\Enso\Newsletter\Facades\EnsoNewsletter;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +22,8 @@ Route::middleware(['holding-page', 'globalscopes'])->group(function () {
 
     Route::get('events/{event_type}/{event}')->uses([\App\Http\Controllers\EventController::class, 'show'])->name('events.show');
     Route::get('events/{event_type}')->uses([\App\Http\Controllers\EventTypeController::class, 'show'])->name('event-types.show');
+
+    EnsoNewsletter::routes();
 
     // Duplicate route for post-login/register redirection
     Route::get('home')->uses([\App\Http\Controllers\HomeController::class, 'redirect']);

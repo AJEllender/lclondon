@@ -5,12 +5,14 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 mix.webpackConfig({
+
   resolve: {
     modules: [
       path.resolve(__dirname, 'vendor/yadda/enso-core/resources/js'),
       path.resolve(__dirname, 'node_modules'),
-    ],
+    ]
   },
+
   plugins: [
     new webpack.NormalModuleReplacementPlugin(/^\.\/package$/, function (result) {
       if (/cheerio/.test(result.context)) {
