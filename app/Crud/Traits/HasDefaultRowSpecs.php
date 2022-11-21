@@ -17,6 +17,7 @@ trait HasDefaultRowSpecs
             \App\Crud\Rows\EventHighlightsRow::make(),
             \App\Crud\Rows\GalleryRow::make(),
             \App\Crud\Rows\ImageRow::make(),
+            \App\Crud\Rows\InfoStripRow::make(),
             \App\Crud\Rows\NewsletterRow::make(),
             \App\Crud\Rows\TextImageRow::make(),
             \App\Crud\Rows\TextRow::make(),
