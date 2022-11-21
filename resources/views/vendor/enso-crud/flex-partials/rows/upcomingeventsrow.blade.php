@@ -4,6 +4,12 @@
    *   ->row_id - string
    *   ->row_label - string
    *   ->row_type - string
+   *   ->buttons, Collection - items which consist of:
+   *     ->label - string
+   *     ->hover - string - if not set, use the label as the hover tooltip
+   *     ->link - string
+   *     ->target - string
+   *     ->rel - string
    *   ->event_types - Collection
    *   ->title - string
    */
@@ -22,6 +28,12 @@
             @include('events.parts.list', [
                 'events' => $row_data->events,
             ])
+
+            @component('enso-crud::flex-partials.components.buttons', [
+                'wrapper_class' => 'mt-4 sm:mt-6 md:mt-8 text-center',
+                'buttons' => $row_data->buttons,
+            ])
+            @endcomponent
         </div>
     </div>
 @endif

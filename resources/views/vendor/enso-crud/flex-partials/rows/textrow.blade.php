@@ -37,7 +37,7 @@
         @endcomponent
 
         @component('enso-crud::flex-partials.components.buttons', [
-            'wrapper_class' => 'mt-4 sm:mt-6 md:mt-8',
+            'wrapper_class' => 'mt-4 sm:mt-6 md:mt-8 text-center',
             'buttons' => $row_data->buttons,
         ])
         @endcomponent

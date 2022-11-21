@@ -2,6 +2,8 @@
 
 namespace App\Crud\Rows;
 
+use App\Crud\Fields\ButtonsField;
+use Illuminate\Support\Collection;
 use Yadda\Enso\Crud\Forms\Fields\TextField;
 use Yadda\Enso\Crud\Forms\FlexibleContentSection;
 use Yadda\Enso\Crud\Handlers\FlexibleRow;
@@ -25,6 +27,7 @@ class UpcomingEventTypesRow extends FlexibleContentSection
             ->addFields([
                 TextField::make('title')
                     ->setLabel('Title'),
+                ButtonsField::make('buttons'),
             ]);
     }
 
@@ -37,7 +40,10 @@ class UpcomingEventTypesRow extends FlexibleContentSection
      */
     protected static function getRowContent(FlexibleRow $row): array
     {
+        $instance = new static;
+
         return [
+            'buttons' => $row->block('buttons') ? $instance->getFlexibleContentFieldContent('buttons', $row) : new Collection,
             'event_types' => EnsoCrud::query('eventtype')
                 ->withFutureEvents()
                 ->orderByEventDates()
@@ -47,7 +53,7 @@ class UpcomingEventTypesRow extends FlexibleContentSection
                     },
                 ])
                 ->get(),
-            'title' => $row->blockContent('title'),
+            'title' => $row->block('buttons') ? $row->blockContent('title') : '',
         ];
     }
 }

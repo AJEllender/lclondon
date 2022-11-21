@@ -2,6 +2,7 @@
 
 namespace App\Crud\Rows;
 
+use App\Crud\Fields\ButtonsField;
 use Illuminate\Support\Arr;
 use Yadda\Enso\Crud\Forms\Fields\SelectField;
 use Yadda\Enso\Crud\Forms\Fields\TextField;
@@ -30,6 +31,7 @@ class UpcomingEventsRow extends FlexibleContentSection
                 SelectField::make('event_type')
                     ->useAjax(route('admin.event-types.index'), EnsoCrud::modelClass('eventtype'))
                     ->setHelpText('Leave empty to show the latest 3 events of ANY type.'),
+                ButtonsField::make('buttons'),
             ]);
     }
 
@@ -51,6 +53,7 @@ class UpcomingEventsRow extends FlexibleContentSection
         $event_model_class = EnsoCrud::modelClass('event');
 
         return [
+            'buttons' => $instance->getFlexibleContentFieldContent('buttons', $row),
             'event_type' => $event_type,
             'events' => $event_model_class::query('event')
                 /**

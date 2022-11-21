@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   theme: {
@@ -24,6 +25,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
   ],
   purge: {
     content: ['./resources/**/*.blade.php', './resources/**/*.js', './resources/**/*.vue'],
