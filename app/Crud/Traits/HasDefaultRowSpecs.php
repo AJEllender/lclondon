@@ -20,6 +20,7 @@ trait HasDefaultRowSpecs
             \App\Crud\Rows\NewsletterRow::make(),
             \App\Crud\Rows\TextImageRow::make(),
             \App\Crud\Rows\TextRow::make(),
+            \App\Crud\Rows\UpcomingEventsRow::make(),
             \App\Crud\Rows\UpcomingEventTypesRow::make(),
         ];
     }

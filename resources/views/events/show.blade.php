@@ -7,12 +7,17 @@
 @section('content')
     <h1 class="sr-only">{{ $event->getEventName() }}</h1>
 
-    {{-- Breadcrumbs --}}
-
     @if ($event->hasFlexibleContent('header'))
         @flexibleField($event, 'header', 'header')
     @elseif ($event->eventType && $event->eventType->hasFlexibleContent('header'))
-        @flexibleField($event->eventType, 'header', 'header')
+        {{--
+            Due to new functionality that lets the FlexibleRow unpacking process
+            know the model of the parent object, we need to replace the content
+            here so that the 'parent' model is actually correct when not using
+            override content.
+        --}}
+        @php $event->header = $event->eventType->header @endphp
+        @flexibleField($event, 'header', 'header')
     @endif
 
     @if (!($event->isPublished()))
@@ -36,28 +41,16 @@
         </div>
     </div>
 
-    {{-- Add Event Specific information, like date & time --}}
-
     @if ($event->hasFlexibleContent('content'))
         @flexibleField($event, 'content', 'content')
     @elseif ($event->eventType && $event->eventType->hasFlexibleContent('content'))
-        @flexibleField($event->eventType, 'content', 'content')
+        {{--
+            Due to new functionality that lets the FlexibleRow unpacking process
+            know the model of the parent object, we need to replace the content
+            here so that the 'parent' model is actually correct when not using
+            override content.
+        --}}
+        @php $event->content = $event->eventType->content @endphp
+        @flexibleField($event, 'content', 'content')
     @endif
-
-    @if ($upcoming_events->count())
-        <div data-label="" id="" class="relative w-full flex items-center justify-center my-12 sm:my-16 md:my-20 lg:my-24 px-6 sm:px-12">
-            <div class="w-full max-w-xs sm:max-w-2xl lg:max-w-5xl">
-                @component('enso-crud::flex-partials.components.title', [
-                    'class' => 'mb-4 md:mb-6 lg:mb-10 text-center'
-                ])
-                    Other Future {{ $event->eventType ? $event->eventType->getName() : '' }} Dates
-                @endcomponent
-
-                @include('events.parts.list', [
-                    'events' => $upcoming_events,
-                ])
-            </div>
-        </div>
-    @endif
-
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\EventType;
 use App\Traits\HasFlexibleFields;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Yadda\Enso\Crud\Contracts\IsCrudModel as ContractsIsCrudModel;
 use Yadda\Enso\Crud\Contracts\Model\IsPublishable as ModelIsPublishable;
 use Yadda\Enso\Crud\Traits\HasUuids;
@@ -18,7 +18,6 @@ use Yadda\Enso\Crud\Traits\Model\IsPublishable;
 use Yadda\Enso\Facades\EnsoCrud;
 use Yadda\Enso\Media\Contracts\ImageFile;
 use Yadda\Enso\Meta\Traits\HasMeta;
-use Yadda\Enso\Users\Contracts\User;
 
 class Event extends Model implements ContractsIsCrudModel, ModelIsPublishable
 {
@@ -221,6 +220,19 @@ class Event extends Model implements ContractsIsCrudModel, ModelIsPublishable
     public function image(): BelongsTo
     {
         return $this->belongsTo(App::make(ImageFile::class), 'image_id');
+    }
+
+    /**
+     * Filter an Event query to return only those for a specific EventType
+     *
+     * @param Builder   $query
+     * @param EventType $event_type
+     *
+     * @return void
+     */
+    public function scopeForEventType(Builder $query, EventType $event_type): void
+    {
+        $query->where('event_type_id', $event_type->getKey());
     }
 
     /**

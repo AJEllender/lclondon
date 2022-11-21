@@ -24,6 +24,8 @@ class FlexibleField extends BaseClass
         $this->rows = collect($parsed_data)->reduce(function ($carry, $item) use ($base_class) {
             $row = new FlexibleRow($item, $base_class);
 
+            $row->setInstance($this->getInstance());
+
             // Set this row's previous row.
             $row->previous_row = $carry->last();
 

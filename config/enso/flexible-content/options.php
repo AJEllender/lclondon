@@ -39,6 +39,7 @@ return [
         'newsletter' => \App\Crud\Rows\NewsletterRow::class,
         'textimagerow' => \App\Crud\Rows\TextImageRow::class,
         'textrow' => \App\Crud\Rows\TextRow::class,
+        'upcomingeventsrow' => \App\Crud\Rows\UpcomingEventsRow::class,
         'upcomingeventtypesrow' => \App\Crud\Rows\UpcomingEventTypesRow::class,
     ],
 
