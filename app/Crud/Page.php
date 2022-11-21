@@ -33,8 +33,8 @@ class Page extends BaseCrud
 
     protected function removeUnusedFields(Form $form)
     {
-        $section = $form->getSection('content');
+        $section = $form->getSection('main');
 
-        $section->removeField('thumbnail');
+        $section->removeField('thumbnail_id');
     }
 }
