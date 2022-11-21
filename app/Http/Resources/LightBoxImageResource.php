@@ -18,9 +18,13 @@ class LightBoxImageResource extends JsonResource
         return [
             'id' => $this->id,
             'alt' => $this->alt_text,
-            'preview' => $this->preview,
             'src' => $this->getUrl(),
             'title' => $this->caption,
+            'urls' => [
+                'gallery_3' => $this->getResizeUrl('gallery_3', true),
+                'gallery_4' => $this->getResizeUrl('gallery_4', true),
+                'gallery_6' => $this->getResizeUrl('gallery_6', true),
+            ],
         ];
     }
 }

@@ -23,6 +23,9 @@
             @endcomponent
         @endif
 
-        <gallery :images="{{ \App\Http\Resources\LightBoxImageResource::collection($row_data->images)->toJson() }}"></gallery>
+        <gallery
+            :images="{{ \App\Http\Resources\LightBoxImageResource::collection($row_data->images)->toJson() }}"
+            :per-row="{{ $row_data->per_row }}"
+        ></gallery>
     </div>
 </div>

@@ -4,11 +4,12 @@
       <div
         v-for="(image, index) in images"
         :key="image.id"
-        class="grow-0 shrink-0 basis-full sm:basis-1/2 lg:basis-1/3 p-4"
+        class="grow-0 shrink-0 p-4"
+        :class="itemClass"
       >
         <img
           class="w-full h-auto rounded-lg shadow-lg"
-          :src="image.preview"
+          :src="imageUrl(image)"
           @click.prevent="showMultiple(index)"
         >
       </div>
@@ -30,7 +31,11 @@ export default {
     images: {
       type: Array,
       default: () => []
-    }
+    },
+    perRow: {
+      type: Number,
+      default: 4,
+    },
   },
   data() {
     return {
@@ -42,7 +47,23 @@ export default {
   mounted() {
     this.imgs = this.images;
   },
+  computed: {
+    itemClass() {
+      switch (this.perRow) {
+        case 3:
+          return 'basis-full sm:basis-1/2 lg:basis-1/3';
+        case 6:
+          return 'basis-1/3 sm:basis-1/4 lg:basis-1/6';
+        case 4:
+        default:
+          return 'basis-1/2 sm:basis-1/3 lg:basis-1/4';
+      }
+    },
+  },
   methods: {
+    imageUrl(image) {
+      return image.urls['gallery_' + this.perRow];
+    },
     showMultiple(index) {
       this.index = index;
       this.show()

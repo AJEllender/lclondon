@@ -2,7 +2,9 @@
 
 namespace App\Crud\Rows;
 
+use Illuminate\Support\Arr;
 use Yadda\Enso\Crud\Forms\Fields\FileUploadFieldResumable;
+use Yadda\Enso\Crud\Forms\Fields\SelectField;
 use Yadda\Enso\Crud\Forms\Fields\TextField;
 use Yadda\Enso\Crud\Forms\FlexibleContentSection;
 use Yadda\Enso\Crud\Handlers\FlexibleRow;
@@ -29,7 +31,23 @@ class GalleryRow extends FlexibleContentSection
         $this
             ->setLabel('Gallery')
             ->addFields([
-                TextField::make('title'),
+                TextField::make('title')
+                    ->addFieldsetClass('is-three-quarters'),
+                SelectField::make('per_row')
+                    ->setLabel('Images Per Row')
+                    ->setOptions([
+                        3 => '3',
+                        4 => '4',
+                        6 => '6',
+                    ])
+                    ->setDefaultValue([
+                        SelectField::makeOption(4, 4)
+                    ])
+                    ->setSettings([
+                        'allow_empty' => false,
+                        'show_label' => false,
+                    ])
+                    ->addFieldsetClass('is-one-quarter'),
                 FileUploadFieldResumable::make('images')
                     ->setMaxFiles(-1),
             ]);
@@ -42,8 +60,13 @@ class GalleryRow extends FlexibleContentSection
      */
     protected static function getRowContent(FlexibleRow $row): array
     {
+        $instance = new static;
+
         return [
             'images' => $row->blockContent('images'),
+            'per_row' => $row->block('per_row')
+                ? Arr::get($row->blockContent('per_row'), $instance->getField('per_row')->getSetting('track_by'), 4)
+                : 4,
             'title' => $row->blockContent('title'),
         ];
     }
