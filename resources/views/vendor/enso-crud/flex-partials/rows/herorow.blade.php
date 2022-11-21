@@ -28,7 +28,7 @@
 
     $image_padding = $row_data->image
         ? 'py-8 sm:py-16 md:py-24 lg:py-32 xl:py-48'
-        : 'py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24';
+        : 'py-4 sm:py-6 md:py-8';
 @endphp
 
 <div
@@ -60,13 +60,15 @@
     <div class="relative w-full flex items-center justify-center px-6 sm:px-12">
         <div class="text-center md:max-w-3xl">
             @if ($row_data->title)
-                <h2 class="font-title text-2xl md:text-4xl lg:text-5xl font-bold mb-3">
+                <h2 class="font-title text-2xl md:text-4xl lg:text-5xl font-bold ">
                     {{ $row_data->title }}
                 </h2>
             @endif
 
             @if ($row_data->content)
-            {!!  $row_data->content !!}
+                <div class="mt-3">
+                    {!!  $row_data->content !!}
+                </div>
             @endif
 
             @include('enso-crud::flex-partials.blocks.buttons', [
