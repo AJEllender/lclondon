@@ -4,7 +4,7 @@
       <div
         v-for="(image, index) in images"
         :key="image.id"
-        class="grow-0 shrink-0 p-4"
+        class="grow-0 shrink-0 p-4 cursor-pointer"
         :class="itemClass"
       >
         <img
