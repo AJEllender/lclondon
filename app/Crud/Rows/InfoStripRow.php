@@ -2,19 +2,18 @@
 
 namespace App\Crud\Rows;
 
+use App\Crud\Contracts\AppliesDiminishedMargins;
 use App\Crud\Fields\ButtonsField;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
 use Yadda\Enso\Crud\Forms\Fields\SelectField;
 use Yadda\Enso\Crud\Forms\Fields\TextField;
-use Yadda\Enso\Crud\Forms\Fields\WysiwygField;
 use Yadda\Enso\Crud\Forms\FlexibleContentSection;
 use Yadda\Enso\Crud\Handlers\FlexibleRow;
 
 /**
  * Represents a purely text row withing a flexible content collection.
  */
-class InfoStripRow extends FlexibleContentSection
+class InfoStripRow extends FlexibleContentSection implements AppliesDiminishedMargins
 {
     /**
      * Default name for this section

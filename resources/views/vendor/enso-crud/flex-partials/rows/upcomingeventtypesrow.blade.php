@@ -14,13 +14,21 @@
    *   ->title - string
    */
   $row_data = $row->unpack();
+
+  $top_margin = $row->previousRowHas('diminished-margins')
+    ? 'mt-6 sm:mt8 md:mt-10 lg:mt-12'
+    : 'mt-12 sm:mt-16 md:mt-20 lg:mt-24';
+
+  $bottom_margin = $row->nextRowHas('diminished-margins')
+    ? 'mb-6 sm:mb8 md:mb-10 lg:mb-12'
+    : 'mb-12 sm:mb-16 md:mb-20 lg:mb-24';
 @endphp
 
 @if($row_data->event_types->count())
     <div
         data-label="{{ $row_data->row_label }}"
         id="{{  $row_data->row_id }}"
-        class="w-full my-12 sm:my-16 md:my-20 lg:my-24 px-6 sm:px-12"
+        class="w-full {{ $top_margin }} {{ $bottom_margin }} px-6 sm:px-12"
     >
         @if (!empty($row_data->title))
             <div class="w-full md:max-w-3xl mx-auto">

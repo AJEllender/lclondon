@@ -12,20 +12,10 @@ class FlexibleRow extends BaseClass
 {
     /**
      * The parent instance for this row.
+     *
+     * @var mixed|null
      */
     protected $instance;
-
-    /**
-     * Unpacked data from this row.
-     */
-    protected $unpacked;
-
-    /**
-     * The previous row
-     *
-     * @var FlexibleRow|null
-     */
-    public $previous_row;
 
     /**
      * The next row
@@ -35,6 +25,44 @@ class FlexibleRow extends BaseClass
     public $next_row;
 
     /**
+     * The previous row
+     *
+     * @var FlexibleRow|null
+     */
+    public $previous_row;
+
+    /**
+     * Instance of the RowSpec from which this was generated.
+     *
+     * @var \Yadda\Enso\Crud\Forms\FlexibleContentSection|null
+     */
+    protected $rowspec_instance;
+
+    /**
+     * Unpacked data from this row.
+     *
+     * @var mixed
+     */
+    protected $unpacked;
+
+    /**
+     * Create a new FlexibleRow
+     *
+     * @param array   $row_data   Row data from database
+     * @param string  $base_class A class to use as the basis for BEM classes
+     * @param integer $index      The 0-based index of this row
+     */
+    public function __construct($row_data, $base_class = 'flexible-content')
+    {
+        parent::__construct($row_data, $base_class);
+
+        if (array_key_exists($this->getType(), Config::get('enso.flexible-content.options.rows'))) {
+            $rowspec_class = Config::get('enso.flexible-content.options.rows')[$this->getType()];
+            $this->rowspec_instance = new $rowspec_class;
+        }
+    }
+
+    /**
      * Get the parent instance of this row.
      *
      * @return mixed
@@ -42,6 +70,16 @@ class FlexibleRow extends BaseClass
     public function getInstance()
     {
         return $this->instance;
+    }
+
+    /**
+     * Get the initiating rowspec instance of this row.
+     *
+     * @return mixed
+     */
+    public function getRowspecInstance()
+    {
+        return $this->rowspec_instance;
     }
 
     /**
@@ -58,6 +96,51 @@ class FlexibleRow extends BaseClass
         }
 
         return $this->getInstance();
+    }
+
+
+    /**
+     * Determines whether the next row implements a specific feature.
+     *
+     * @param string $feature
+     *
+     * @return boolean
+     */
+    public function nextRowHas(string $feature, ...$args): bool
+    {
+        if (!$this->next_row || !$this->next_row->getRowspecInstance()) {
+            return false;
+        }
+
+        switch ($feature) {
+            case 'diminished-margins':
+                return $this->next_row->getRowspecInstance() instanceof \App\Crud\Contracts\AppliesDiminishedMargins;
+                break;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Determines whether the previous row implements a specific feature.
+     *
+     * @param string $feature First param must always be feature name.
+     *
+     * @return boolean
+     */
+    public function previousRowHas(string $feature, ...$args): bool
+    {
+        if (!$this->previous_row || !$this->previous_row->getRowspecInstance()) {
+            return false;
+        }
+
+        switch ($feature) {
+            case 'diminished-margins':
+                return $this->previous_row->getRowspecInstance() instanceof \App\Crud\Contracts\AppliesDiminishedMargins;
+                break;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -77,6 +160,22 @@ class FlexibleRow extends BaseClass
     }
 
     /**
+     * Parent Rowspec Instance helper function
+     *
+     * @param mixed|null $rowspec_instance
+     *
+     * @return mixed|self
+     */
+    public function rowspecInstance($rowspec_instance = null)
+    {
+        if (!is_null($rowspec_instance)) {
+            return $this->setRowspecInstance($rowspec_instance);
+        }
+
+        return $this->getRowspecInstance();
+    }
+
+    /**
      * Set the parent instance on this row.
      *
      * @param mixed $instance
@@ -86,6 +185,20 @@ class FlexibleRow extends BaseClass
     public function setInstance($instance = null): self
     {
         $this->instance = $instance;
+
+        return $this;
+    }
+
+    /**
+     * Set the initiating rowspec instance on this row.
+     *
+     * @param mixed $rowspec_instance
+     *
+     * @return self
+     */
+    public function setRowspecInstance($rowspec_instance = null): self
+    {
+        $this->rowspec_instance = $rowspec_instance;
 
         return $this;
     }

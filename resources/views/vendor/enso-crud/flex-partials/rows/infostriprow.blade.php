@@ -19,7 +19,7 @@
 <div
     data-label="{{ $row_data->row_label }}"
     id="{{  $row_data->row_id }}"
-    class="relative w-full flex items-center justify-center font-bold text-base md:text-lg lg:text-xl py-2 px-6 sm:px-12 bg-{{ $row_data->color }} text-white"
+    class="relative w-full flex items-center justify-center font-bold text-base md:text-lg lg:text-xl py-2.5 px-6 sm:px-12 bg-{{ $row_data->color }} text-white"
 >
     {{ $row_data->title }}
 </div>
